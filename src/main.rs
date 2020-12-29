@@ -5,8 +5,7 @@ struct MorseLetter {
 impl MorseLetter {
     fn value(&self) {
         for sign in &self.morse {
-            sign.value();
-            println!("{:02b}", sign.binaryValue());
+            println!("{:02b} : {:?}", sign.binaryValue(), sign.value());
         }
     }
 }
@@ -35,13 +34,14 @@ enum MorseSign {
     WordBreak,
 }
 impl MorseSign {
-    fn value(&self) {
-        match self {
-            MorseSign::Dot => println!("Dot"),
-            MorseSign::Dash => println!("Dash"),
-            MorseSign::LetterBreak => println!("LetterBreak"),
-            MorseSign::WordBreak => println!("WordBreak"),
-        }
+    fn value(&self) -> String{
+        let value: String = match self {
+            MorseSign::Dot => String::from("Dot"),
+            MorseSign::Dash => String::from("Dash"),
+            MorseSign::LetterBreak => String::from("LetterBreak"),
+            MorseSign::WordBreak => String::from("WordBreak"),
+        };
+        value
     }
     fn binaryValue(&self) -> u8 {
         match &self {
@@ -54,6 +54,7 @@ impl MorseSign {
 }
 fn main() {
     let letterB = MorseLetter::from('b');
+    letterB.value();
 }
 
 #[cfg(test)]
