@@ -1,11 +1,18 @@
 
-mod morseletter;
-use morseletter::MorseLetter;
+pub mod morse;
+use morse::morse::MorseLetter;
 fn main() {
-
-    let letterB = MorseLetter::from('b');
-    let text: String = String::from("Hello World!");
-    letterB.value();
+    let s: String = String::from("el el");
+    let char_vec: Vec<char> = s.chars().collect();
+    for c in char_vec{
+        let x;
+        if c != ' '{
+            x = MorseLetter::from(c);
+        } else {
+            x = MorseLetter::from(' ');
+        }
+            x.value();
+    }
 }
 
 #[cfg(test)]
