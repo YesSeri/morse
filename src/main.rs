@@ -1,25 +1,15 @@
-
 pub mod morse;
-use morse::morse::MorseLetter;
+use morse::morse::MorseSentence;
 fn main() {
     let s: String = String::from("el el");
-    let char_vec: Vec<char> = s.chars().collect();
-    for c in char_vec{
-        let x;
-        if c != ' '{
-            x = MorseLetter::from(c);
-        } else {
-            x = MorseLetter::from(' ');
-        }
-            x.value();
-    }
+    let m = MorseSentence::from(s);
+    m.to_string();
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     #[test]
     fn letter_comparison() {
-        assert_eq!(MorseLetter::from('b'), 'a');
+        assert_eq!(2, 1 + 1);
     }
 }
